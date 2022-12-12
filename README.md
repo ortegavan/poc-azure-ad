@@ -1,10 +1,11 @@
+![](https://github.com/ortegavan/poc-azure-ad/blob/958c31908171220166a69d79819276b71d4a3d21/README.jpg)
+
 ## Autenticando usuários no Azure AD via aplicação Angular
 
 ### Instale a Microsoft Authentication Library (MSAL) na aplicação Angular. É necessário instalar a biblioteca e o módulo de autenticação via browser:
 
-```javascript
+```
 npm install @azure/msal-browser
-
 npm install @azure/msal-angular
 ```
 
