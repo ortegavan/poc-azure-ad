@@ -2,7 +2,7 @@
 
 ### Instale a Microsoft Authentication Library (MSAL) na aplicação Angular. É necessário instalar a biblioteca e o módulo de autenticação via browser:
 
-```bash
+```javascript
 npm install @azure/msal-browser
 
 npm install @azure/msal-angular
@@ -40,7 +40,7 @@ Salve o ID do aplicativo cliente para usar depois.
 
 ### De volta à aplicação Angular, importe e registre os módulos do MSAL no app.module.ts:
 
-```typescript
+```javascript
 import { MsalModule } from '@azure/msal-angular';
 import { PublicClientApplication } from '@azure/msal-browser';
 ```
@@ -70,13 +70,13 @@ imports: [
 
 No app-routing.module.ts, adicione a constante isIframe que será usada posteriormente:
 
-```typescript
+```javascript
 const isIframe = window !== window.parent && !window.opener;
 ```
 
 No RouterModule.forRoot, inclua a propriedade initialNavigation:
 
-```typescript
+```javascript
 RouterModule.forRoot(routes, {
 	initialNavigation:
 		!BrowserUtils.isInIframe() && !BrowserUtils.isInPopup()
@@ -89,32 +89,32 @@ RouterModule.forRoot(routes, {
 
 Em app.component.html, altere para que o router-outlet fique assim:
 
-```yaml
+```javascript
 <router-outlet *ngIf="!isIframe"></router-outlet>
 ```
 
 Em app.component.ts, importe o MsalService:
 
-```typescript
+```javascript
 import { MsalService } from '@azure/msal-angular';
 ```
 
 Declare as variáveis:
 
-```typescript
+```javascript
 isIframe = false;
 loginDisplay = false;
 ```
 
 No construtor, injete o MsalService:
 
-```typescript
+```javascript
 constructor(private authService: MsalService) {}
 ```
 
 No ngOnInit, faça as alterações:
 
-```typescript
+```javascript
 ngOnInit() {
 	this.isIframe = window !== window.parent && !window.opener;
 }
@@ -122,7 +122,7 @@ ngOnInit() {
 
 No método de login a ser chamado pelo botão de autenticação, faça as alterações:
 
-```typescript
+```javascript
 login() {
 	this.authService.loginPopup().subscribe({
 		next: (result) => {
@@ -136,7 +136,7 @@ login() {
 
 Por fim, crie o método setLoginDisplay:
 
-```typescript
+```javascript
 setLoginDisplay() {
 	this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
 }
@@ -146,6 +146,6 @@ setLoginDisplay() {
 
 Adicione o MsalBroadcastService no app.component.ts e faça um subscribe ao inProgress$, seu código deve ficar assim:
 
-```typescript
+```javascript
 
 ```
